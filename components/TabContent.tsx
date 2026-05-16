@@ -47,17 +47,16 @@ function EducationContent() {
       <h2 className="text-2xl font-bold text-white">Education</h2>
       <div className="space-y-4">
         <div className="border-l-4 border-slate-600 pl-4 py-2">
-          <h3 className="font-bold text-white">Degree in Computer Science</h3>
-          <p className="text-slate-400 text-sm">University Name • Graduation Year</p>
-          <p className="text-slate-300 mt-2">
-            Completed coursework in data structures, algorithms, and web development.
-          </p>
+          <h3 className="font-bold text-white">Bachelor Degree of Electrical Engineering</h3>
+          <p className="text-slate-400 text-sm">GPA: 3.25</p>
+          <div className="text-slate-300 mt-2 space-y-1">
+            <p><span className="font-semibold">Focus:</span> Computer Science and Network Engineering</p>
+          </div>
         </div>
         <div className="border-l-4 border-slate-600 pl-4 py-2">
           <h3 className="font-bold text-white">Certifications</h3>
-          <p className="text-slate-400 text-sm">Various Online Platforms</p>
           <p className="text-slate-300 mt-2">
-            Advanced certifications in React, Node.js, and Full Stack Development.
+            No formal certifications at this time.
           </p>
         </div>
       </div>
@@ -71,18 +70,19 @@ function ExperienceContent() {
       <h2 className="text-2xl font-bold text-white">Experience</h2>
       <div className="space-y-4">
         <div className="border-l-4 border-slate-600 pl-4 py-2">
-          <h3 className="font-bold text-white">Game Developer</h3>
+          <h3 className="font-bold text-white">Game Programmer</h3>
           <p className="text-slate-400 text-sm">October 2025 - Present</p>
           <p className="text-slate-300 mt-2">
-            Currently developing a Roblox game, leveraging my expertise in game design and development to create engaging gameplay experiences.
+            Program gameplay for Roblox games, implementing game mechanics and interactive features.
           </p>
         </div>
         <div className="border-l-4 border-slate-600 pl-4 py-2">
           <h3 className="font-bold text-white">Research Assistant</h3>
           <p className="text-slate-400 text-sm">2024</p>
-          <p className="text-slate-300 mt-2">
-            Topic: VR, Medical Education, Game. Developing a VR application for medical education, combining virtual reality technology with educational content to enhance learning experiences.
-          </p>
+          <div className="text-slate-300 mt-2 space-y-1">
+            <p><span className="font-semibold">Topic:</span> VR, Medical Education, Game</p>
+            <p>Developing a VR app for Medical Education</p>
+          </div>
         </div>
       </div>
     </div>
