@@ -15,13 +15,13 @@ function AboutContent() {
       
       <div className="space-y-3">
         <p className="text-slate-300 leading-relaxed">
-          Born in 2000 in Lombok, Indonesia. I'm a passionate developer with a dream to create engaging games that captivate players around the world.
+          Born in 2000 in Lombok, Indonesia. I&apos;m a passionate developer with a dream to create engaging games that captivate players around the world.
         </p>
         
         <div className="border-l-4 border-cyan-500 pl-4 py-2 bg-slate-800/50 rounded p-4 shadow-md">
           <h3 className="font-semibold text-cyan-400 mb-2 font-mono">&gt; PASSION</h3>
           <p className="text-slate-300">
-            I aspire to be a <span className="text-slate-100 font-medium">game developer</span>, crafting immersive experiences and compelling narratives. I'm particularly drawn to RPG games with deep storytelling and complex mechanics.
+            I aspire to be a <span className="text-slate-100 font-medium">game developer</span>, crafting immersive experiences and compelling narratives. I&apos;m particularly drawn to RPG games with deep storytelling and complex mechanics.
           </p>
         </div>
 
@@ -35,14 +35,14 @@ function AboutContent() {
         <div className="border-l-4 border-cyan-500 pl-4 py-2 bg-slate-800/50 rounded p-4 shadow-md">
           <h3 className="font-semibold text-cyan-400 mb-2 font-mono">&gt; PHILOSOPHY</h3>
           <p className="text-slate-300">
-            I love learning new things! Whether it's game engines, programming languages, or game design principles, continuous growth drives my passion for development.
+            I love learning new things! Whether it&apos;s game engines, programming languages, or game design principles, continuous growth drives my passion for development.
           </p>
         </div>
 
         <div className="border-l-4 border-cyan-500 pl-4 py-2 bg-slate-800/50 rounded p-4 shadow-md">
           <h3 className="font-semibold text-cyan-400 mb-2 font-mono">&gt; 3D_MODELING</h3>
           <p className="text-slate-300">
-            I work with <span className="text-slate-100 font-medium">Blender</span> for 3D modeling and asset creation. While I'm still developing my skills and wouldn't consider myself a professional, I'm passionate about learning 3D design to complement my game development work. I use Blender for creating custom game assets, prototyping environments, and experimenting with visual concepts.
+            I work with <span className="text-slate-100 font-medium">Blender</span> for 3D modeling and asset creation. While I&apos;m still developing my skills and wouldn&apos;t consider myself a professional, I&apos;m passionate about learning 3D design to complement my game development work. I use Blender for creating custom game assets, prototyping environments, and experimenting with visual concepts.
           </p>
         </div>
       </div>
