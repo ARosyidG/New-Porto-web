@@ -45,6 +45,24 @@ function AboutContent() {
             I work with <span className="text-slate-100 font-medium">Blender</span> for 3D modeling and asset creation. While I&apos;m still developing my skills and wouldn&apos;t consider myself a professional, I&apos;m passionate about learning 3D design to complement my game development work. I use Blender for creating custom game assets, prototyping environments, and experimenting with visual concepts.
           </p>
         </div>
+
+        <div className="border-l-4 border-cyan-500 pl-4 py-2 bg-slate-800/50 rounded p-4 shadow-md">
+          <h3 className="font-semibold text-cyan-400 mb-2 font-mono">&gt; PROGRAMMING_LANGUAGES</h3>
+          <p className="text-slate-300">
+            <span className="text-slate-100 font-medium">Lua</span> • <span className="text-slate-100 font-medium">TypeScript</span> • <span className="text-slate-100 font-medium">JavaScript</span> • <span className="text-slate-100 font-medium">C#</span> • <span className="text-slate-100 font-medium">Python</span> • <span className="text-slate-100 font-medium">C++</span> • <span className="text-slate-100 font-medium">PHP</span> • <span className="text-slate-100 font-medium">Java</span>
+          </p>
+        </div>
+
+        <div className="border-l-4 border-cyan-500 pl-4 py-2 bg-slate-800/50 rounded p-4 shadow-md">
+          <h3 className="font-semibold text-cyan-400 mb-2 font-mono">&gt; TOOLS_AND_TECH</h3>
+          <div className="text-slate-300 space-y-2">
+            <p><span className="text-slate-100 font-medium">Game Development:</span> Roblox Studio, Roblox Luau, Unity, Godot</p>
+            <p><span className="text-slate-100 font-medium">Web Development:</span> Next.js, React, TypeScript, Tailwind CSS</p>
+            <p><span className="text-slate-100 font-medium">Backend Frameworks:</span> Laravel, Spring Boot</p>
+            <p><span className="text-slate-100 font-medium">3D & Design:</span> Blender</p>
+            <p><span className="text-slate-100 font-medium">Tools & Environment:</span> VS Code, Git, GitHub</p>
+          </div>
+        </div>
       </div>
     </div>
   );
