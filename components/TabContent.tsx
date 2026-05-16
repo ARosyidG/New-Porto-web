@@ -71,19 +71,17 @@ function ExperienceContent() {
       <h2 className="text-2xl font-bold text-white">Experience</h2>
       <div className="space-y-4">
         <div className="border-l-4 border-slate-600 pl-4 py-2">
-          <h3 className="font-bold text-white">Senior Developer</h3>
-          <p className="text-slate-400 text-sm">Company Name • 2023 - Present</p>
+          <h3 className="font-bold text-white">Game Developer</h3>
+          <p className="text-slate-400 text-sm">October 2025 - Present</p>
           <p className="text-slate-300 mt-2">
-            Led development of full-stack applications using React, Node.js, and modern
-            development practices.
+            Currently developing a Roblox game, leveraging my expertise in game design and development to create engaging gameplay experiences.
           </p>
         </div>
         <div className="border-l-4 border-slate-600 pl-4 py-2">
-          <h3 className="font-bold text-white">Full Stack Developer</h3>
-          <p className="text-slate-400 text-sm">Previous Company • 2021 - 2023</p>
+          <h3 className="font-bold text-white">Research Assistant</h3>
+          <p className="text-slate-400 text-sm">2024</p>
           <p className="text-slate-300 mt-2">
-            Developed and maintained multiple client projects with focus on performance and
-            user experience.
+            Topic: VR, Medical Education, Game. Developing a VR application for medical education, combining virtual reality technology with educational content to enhance learning experiences.
           </p>
         </div>
       </div>
