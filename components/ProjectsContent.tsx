@@ -162,10 +162,10 @@ function ProjectTab({
   return (
     <button
       onClick={onClick}
-      className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 whitespace-nowrap text-sm md:text-base ${
+      className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 whitespace-nowrap text-sm md:text-base font-mono ${
         isActive
-          ? 'bg-slate-100 text-slate-900 shadow-lg'
-          : 'text-slate-300 hover:text-white hover:bg-slate-700'
+          ? 'bg-cyan-500 text-slate-900 shadow-lg border border-cyan-400 glow-animation font-bold'
+          : 'text-slate-300 hover:text-cyan-400 border border-transparent hover:border-cyan-600 hover:bg-slate-700/30'
       }`}
     >
       {project.projectName}
@@ -184,16 +184,18 @@ export default function ProjectsContent() {
 
   return (
     <div className="space-y-8">
-      <h2 className="text-2xl font-bold text-white">Projects</h2>
+      <h2 className="text-2xl font-bold text-white font-mono">
+        <span className="neon-text">&gt; PROJECT_ARCHIVE</span>
+      </h2>
 
       {/* Mobile Dropdown */}
       <div className="md:hidden">
         <div className="relative">
           <button
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            className="w-full px-6 py-2 bg-slate-100 text-slate-900 font-medium rounded-lg shadow-lg flex justify-between items-center"
+            className="w-full px-6 py-2 bg-gradient-to-r from-cyan-600 to-cyan-500 text-slate-900 font-medium font-mono rounded-lg shadow-lg flex justify-between items-center border border-cyan-400 glow-animation"
           >
-            {activeProject.projectName}
+            [{activeProject.projectName}]
             <span
               className={`transition-transform duration-300 ${
                 isDropdownOpen ? 'rotate-180' : ''
@@ -205,18 +207,18 @@ export default function ProjectsContent() {
 
           {/* Dropdown Menu */}
           {isDropdownOpen && (
-            <div className="absolute top-full left-0 right-0 mt-2 bg-slate-800 border border-slate-700 rounded-lg shadow-lg overflow-hidden z-10">
+            <div className="absolute top-full left-0 right-0 mt-2 bg-slate-800 border-2 border-cyan-600 rounded-lg shadow-lg overflow-hidden z-10 border-glow">
               {projects.map((project) => (
                 <button
                   key={project.projectName}
                   onClick={() => handleMobileProjectChange(project)}
-                  className={`w-full px-6 py-3 text-left font-medium transition-all duration-300 ${
+                  className={`w-full px-6 py-3 text-left font-medium font-mono transition-all duration-300 ${
                     activeProject.projectName === project.projectName
-                      ? 'bg-slate-700 text-white'
-                      : 'text-slate-300 hover:bg-slate-700 hover:text-white'
+                      ? 'bg-cyan-600/30 text-cyan-400 border-l-4 border-cyan-400'
+                      : 'text-slate-300 hover:bg-slate-700/50 hover:text-cyan-400'
                   }`}
                 >
-                  {project.projectName}
+                  &gt; {project.projectName}
                 </button>
               ))}
             </div>
@@ -225,7 +227,7 @@ export default function ProjectsContent() {
       </div>
 
       {/* Desktop Project Tabs */}
-      <div className="hidden md:flex flex-wrap gap-2 p-4 bg-slate-800 rounded-lg overflow-x-auto">
+      <div className="hidden md:flex flex-wrap gap-2 p-4 bg-slate-800 rounded-lg overflow-x-auto border border-cyan-600/30 border-glow">
         {projects.map((project) => (
           <ProjectTab
             key={project.projectName}
@@ -239,11 +241,11 @@ export default function ProjectsContent() {
       {/* Project Details */}
       <div className="space-y-6">
         {/* Project Header */}
-        <div className="border-l-4 border-slate-600 pl-6 py-2">
-          <h3 className="text-3xl font-bold text-white mb-2">
-            {activeProject.projectName}
+        <div className="border-l-4 border-cyan-500 pl-6 py-2 bg-slate-800/50 rounded p-6">
+          <h3 className="text-3xl font-bold text-white mb-2 font-mono">
+            <span className="neon-text">&gt;</span> {activeProject.projectName}
           </h3>
-          <p className="text-slate-400 text-lg mb-4">{activeProject.about}</p>
+          <p className="text-cyan-300 text-lg mb-4">{activeProject.about}</p>
 
           {/* Tags */}
           {activeProject.tags && activeProject.tags.length > 0 && (
@@ -251,9 +253,9 @@ export default function ProjectsContent() {
               {activeProject.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1 bg-slate-700 text-slate-100 rounded-full text-sm font-medium"
+                  className="px-3 py-1 bg-cyan-600/20 text-cyan-300 rounded-full text-sm font-medium border border-cyan-600 font-mono"
                 >
-                  {tag}
+                  [ {tag} ]
                 </span>
               ))}
             </div>
@@ -261,23 +263,23 @@ export default function ProjectsContent() {
         </div>
 
         {/* Project Description */}
-        <div className="bg-slate-800 rounded-lg p-6">
+        <div className="bg-slate-800/50 rounded-lg p-6 border border-cyan-600/30 border-glow">
           <div className="text-slate-300 space-y-4">{activeProject.desc}</div>
         </div>
 
         {/* Call to Action */}
         {activeProject.githubLink && (
-          <div className="bg-gradient-to-r from-slate-700 to-slate-800 rounded-lg p-6 border border-slate-600">
-            <p className="text-slate-300 mb-4">
-              Want to see the code? Check out the GitHub repository for this project.
+          <div className="bg-gradient-to-r from-cyan-600/20 to-purple-600/20 rounded-lg p-6 border-2 border-cyan-600 border-glow">
+            <p className="text-slate-300 mb-4 font-mono">
+              <span className="neon-text">&gt;</span> View source code on GitHub
             </p>
             <a
               href={activeProject.githubLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-6 py-2 bg-slate-100 text-slate-900 font-bold rounded-lg hover:bg-white transition-colors duration-300"
+              className="inline-block px-6 py-2 bg-gradient-to-r from-cyan-600 to-cyan-500 text-slate-900 font-bold rounded-lg hover:shadow-lg hover:from-cyan-500 hover:to-cyan-400 transition-all duration-300 border border-cyan-400 glow-animation font-mono"
             >
-              View on GitHub
+              [ OPEN_REPO ]
             </a>
           </div>
         )}

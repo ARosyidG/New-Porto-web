@@ -9,29 +9,31 @@ interface TabContentProps {
 function AboutContent() {
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-white">About Me</h2>
+      <h2 className="text-2xl font-bold text-white font-mono">
+        <span className="neon-text">&gt; ABOUT_ME</span>
+      </h2>
       
       <div className="space-y-3">
         <p className="text-slate-300 leading-relaxed">
           Born in 2000 in Lombok, Indonesia. I'm a passionate developer with a dream to create engaging games that captivate players around the world.
         </p>
         
-        <div className="border-l-4 border-slate-600 pl-4 py-2">
-          <h3 className="font-semibold text-slate-100 mb-2">My Passion</h3>
+        <div className="border-l-4 border-cyan-500 pl-4 py-2 bg-slate-800/50 rounded p-4 shadow-md">
+          <h3 className="font-semibold text-cyan-400 mb-2 font-mono">&gt; PASSION</h3>
           <p className="text-slate-300">
             I aspire to be a <span className="text-slate-100 font-medium">game developer</span>, crafting immersive experiences and compelling narratives. I'm particularly drawn to RPG games with deep storytelling and complex mechanics.
           </p>
         </div>
 
-        <div className="border-l-4 border-slate-600 pl-4 py-2">
-          <h3 className="font-semibold text-slate-100 mb-2">Languages</h3>
+        <div className="border-l-4 border-cyan-500 pl-4 py-2 bg-slate-800/50 rounded p-4 shadow-md">
+          <h3 className="font-semibold text-cyan-400 mb-2 font-mono">&gt; LANGUAGES</h3>
           <p className="text-slate-300">
             🇮🇩 Indonesia (Native) • 🇬🇧 English (Fluent) • 🇯🇵 Japanese (Learning)
           </p>
         </div>
 
-        <div className="border-l-4 border-slate-600 pl-4 py-2">
-          <h3 className="font-semibold text-slate-100 mb-2">Learning Philosophy</h3>
+        <div className="border-l-4 border-cyan-500 pl-4 py-2 bg-slate-800/50 rounded p-4 shadow-md">
+          <h3 className="font-semibold text-cyan-400 mb-2 font-mono">&gt; PHILOSOPHY</h3>
           <p className="text-slate-300">
             I love learning new things! Whether it's game engines, programming languages, or game design principles, continuous growth drives my passion for development.
           </p>
@@ -44,7 +46,9 @@ function AboutContent() {
 function EducationContent() {
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-white">Education</h2>
+      <h2 className="text-2xl font-bold text-white font-mono">
+        <span className="neon-text">&gt; EDUCATION_LOG</span>
+      </h2>
       <div className="space-y-4">
         <div className="border-l-4 border-slate-600 pl-4 py-2">
           <h3 className="font-bold text-white">Bachelor Degree of Electrical Engineering</h3>
@@ -67,7 +71,9 @@ function EducationContent() {
 function ExperienceContent() {
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-white">Experience</h2>
+      <h2 className="text-2xl font-bold text-white font-mono">
+        <span className="neon-text">&gt; EXPERIENCE_DATA</span>
+      </h2>
       <div className="space-y-4">
         <div className="border-l-4 border-slate-600 pl-4 py-2">
           <h3 className="font-bold text-white">Game Programmer</h3>
