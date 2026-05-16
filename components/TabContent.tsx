@@ -21,7 +21,7 @@ function AboutContent() {
         <div className="border-l-4 border-cyan-500 pl-4 py-2 bg-slate-800/50 rounded p-4 shadow-md">
           <h3 className="font-semibold text-cyan-400 mb-2 font-mono">&gt; PASSION</h3>
           <p className="text-slate-300">
-            I aspire to be a <span className="text-slate-100 font-medium">game developer</span>, crafting immersive experiences and compelling narratives. I&apos;m particularly drawn to RPG games with deep storytelling and complex mechanics.
+            I aspire to be a <span className="text-slate-100 font-medium">game developer </span> and I&apos;m passionate about building engaging games. I particularly enjoy playing RPGs with rich lore and immersive worlds, as well as simulation games like Factorio. While I&apos;m still gaining experience, I&apos;m working toward creating my own immersive game experiences.
           </p>
         </div>
 
