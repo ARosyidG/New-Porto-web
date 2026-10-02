@@ -42,7 +42,7 @@ function ExperienceContent() {
       side: 'left'
     },
     {
-      year: 'October 2025 - Present',
+      year: 'October 2025 - September 2026',
       title: 'Game Programmer',
       description: 'Program gameplay for Roblox games, implementing game mechanics and interactive features.',
       side: 'right'
