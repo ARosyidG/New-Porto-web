@@ -52,7 +52,7 @@ export default function Header({ activeTab, onTabChange }: HeaderProps) {
         {/* Brand Section */}
         <div className="py-6">
           <h1 className="text-3xl font-bold text-white font-mono">
-            <span className="neon-text">&gt;</span> GANAUSI <span className="neon-accent">// ENGINEER</span>
+            <span className="neon-text">&gt;</span> GANAUSI <span className="neon-accent">{'//'} ENGINEER</span>
           </h1>
           <p className="text-cyan-400 mt-1 font-mono text-sm">[ GAME PROGRAMMER ]</p>
         </div>

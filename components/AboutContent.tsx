@@ -115,7 +115,7 @@ export default function AboutContent() {
       {/* 2. Profile Overview Card */}
       <div className="cyber-panel cyber-corner rounded-xl p-6 md:p-7 space-y-4">
         <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase tracking-wider">
-          <span>// 01. PROFILE_OVERVIEW</span>
+          <span>{'//'} 01. PROFILE_OVERVIEW</span>
         </div>
 
         <p className="text-slate-200 text-base md:text-lg leading-relaxed">
