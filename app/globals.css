@@ -22,6 +22,10 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -171,4 +175,112 @@ body {
   border-right: 2px solid var(--neon-cyan);
   pointer-events: none;
 }
+
+/* Cyber HUD Navigation Tabs */
+.cyber-tab-active {
+  background: rgba(8, 47, 73, 0.7);
+  border: 1px solid rgba(6, 182, 212, 0.9);
+  box-shadow: 0 0 16px rgba(0, 255, 255, 0.35), inset 0 0 12px rgba(0, 255, 255, 0.12);
+  color: #67e8f9;
+}
+
+.cyber-tab-active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--neon-cyan);
+  box-shadow: 0 0 8px var(--neon-cyan);
+}
+
+.cyber-tab-inactive {
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(51, 65, 85, 0.6);
+  color: #94a3b8;
+}
+
+.cyber-tab-inactive:hover {
+  background: rgba(15, 23, 42, 0.85);
+  border-color: rgba(6, 182, 212, 0.6);
+  color: #67e8f9;
+  box-shadow: 0 0 14px rgba(0, 255, 255, 0.2);
+}
+
+/* Glass Shining / Light Sweep Animation */
+@keyframes glass-sweep {
+  0% {
+    transform: translateX(-160%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(280%) skewX(-20deg);
+  }
+}
+
+@keyframes idle-glass-sweep {
+  0%, 65% {
+    transform: translateX(-160%) skewX(-20deg);
+    opacity: 0;
+  }
+  70% {
+    opacity: 0.85;
+  }
+  85% {
+    transform: translateX(280%) skewX(-20deg);
+    opacity: 0.85;
+  }
+  86%, 100% {
+    transform: translateX(280%) skewX(-20deg);
+    opacity: 0;
+  }
+}
+
+.cyber-tab-sheen {
+  position: relative;
+  overflow: hidden;
+}
+
+.cyber-tab-sheen::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.04) 20%,
+    rgba(0, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.12) 65%,
+    transparent 100%
+  );
+  transform: translateX(-160%) skewX(-20deg);
+  pointer-events: none;
+  animation: idle-glass-sweep 6s ease-in-out infinite;
+}
+
+.cyber-tab-sheen:hover::after {
+  animation: glass-sweep 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Stagger idle animation across tabs */
+.cyber-tab-delay-1::after {
+  animation-delay: 0s;
+}
+
+.cyber-tab-delay-2::after {
+  animation-delay: 0.25s;
+}
+
+.cyber-tab-delay-3::after {
+  animation-delay: 0.5s;
+}
+
+.cyber-tab-delay-4::after {
+  animation-delay: 0.75s;
+}
+
+
 

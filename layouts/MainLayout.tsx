@@ -11,6 +11,13 @@ interface MainLayoutProps {
 export default function MainLayout({ children }: MainLayoutProps) {
   const [activeTab, setActiveTab] = useState('about');
 
+  const handleTabChange = (tabId: string) => {
+    setActiveTab(tabId);
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="relative flex flex-col min-h-screen bg-gradient-to-br from-slate-900 via-slate-800/80 to-slate-900">
       {/* Animated grid background */}
@@ -18,7 +25,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
       
       {/* Main content wrapper with flex-1 to push footer to bottom */}
       <div className="relative z-10 flex flex-col flex-1">
-        <Header activeTab={activeTab} onTabChange={setActiveTab} />
+        <Header activeTab={activeTab} onTabChange={handleTabChange} />
         <main className="flex-1 max-w-6xl mx-auto w-full px-6 py-12">
           {children || <TabContent activeTab={activeTab} />}
         </main>

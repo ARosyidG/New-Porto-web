@@ -326,21 +326,7 @@ const projects: IProjectList[] = [
 export default function ProjectsContent() {
   const [activeProjectId, setActiveProjectId] = useState<string>(projects[0].id);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectedFilter, setSelectedFilter] = useState<string>('ALL');
   const [copiedField, setCopiedField] = useState<string | null>(null);
-
-  const filterCategories = ['ALL', 'GAME DEV & VR', 'WEB & BACKEND'];
-
-  const filteredProjects = useMemo(() => {
-    if (selectedFilter === 'ALL') return projects;
-    if (selectedFilter === 'GAME DEV & VR') {
-      return projects.filter((p) => p.category === 'Game Dev & VR' || p.category === 'Game Dev');
-    }
-    if (selectedFilter === 'WEB & BACKEND') {
-      return projects.filter((p) => p.category === 'Web & Backend');
-    }
-    return projects;
-  }, [selectedFilter]);
 
   const activeProject = useMemo(() => {
     return projects.find((p) => p.id === activeProjectId) || projects[0];
@@ -348,14 +334,27 @@ export default function ProjectsContent() {
 
   const activeIndex = projects.findIndex((p) => p.id === activeProject.id);
 
+  const scrollToTop = () => {
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const handleSelectProject = (projectId: string) => {
+    setActiveProjectId(projectId);
+    scrollToTop();
+  };
+
   const handlePrevProject = () => {
     const prevIndex = (activeIndex - 1 + projects.length) % projects.length;
     setActiveProjectId(projects[prevIndex].id);
+    scrollToTop();
   };
 
   const handleNextProject = () => {
     const nextIndex = (activeIndex + 1) % projects.length;
     setActiveProjectId(projects[nextIndex].id);
+    scrollToTop();
   };
 
   const copyToClipboard = (text: string, field: string) => {
@@ -404,113 +403,121 @@ export default function ProjectsContent() {
         </div>
       </div>
 
-      {/* 2. Category Filter & Project Navigation */}
-      <div className="space-y-3">
-        {/* Category Pills */}
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="text-[11px] font-mono text-slate-500 mr-1 uppercase tracking-wider">{'//'} FILTER:</span>
-          {filterCategories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setSelectedFilter(cat)}
-              className={`text-xs font-mono px-3 py-1 rounded-full transition-all duration-200 ${
-                selectedFilter === cat
-                  ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-400 font-semibold shadow-[0_0_10px_rgba(6,182,212,0.2)]'
-                  : 'bg-slate-900/60 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-300'
+      {/* Mobile-only Project Selector (< lg screens) */}
+      <div className="lg:hidden">
+        <div className="relative">
+          <button
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            className="w-full px-4 py-3 bg-slate-900/90 border border-cyan-500/40 text-cyan-300 font-mono text-sm rounded-sm shadow-lg flex justify-between items-center transition-colors hover:border-cyan-400 cursor-pointer"
+          >
+            <div className="flex items-center gap-2 overflow-hidden text-left">
+              <span className="text-xs text-slate-500 font-mono">
+                [0{activeIndex + 1}]
+              </span>
+              <span className="font-bold truncate text-white">{activeProject.projectName}</span>
+            </div>
+            <span
+              className={`text-xs text-cyan-400 transition-transform duration-300 shrink-0 ml-2 ${
+                isDropdownOpen ? 'rotate-180' : ''
               }`}
             >
-              {cat}
-            </button>
-          ))}
-        </div>
+              ▼
+            </span>
+          </button>
 
-        {/* Mobile Dropdown */}
-        <div className="md:hidden">
-          <div className="relative">
-            <button
-              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              className="w-full px-4 py-3 bg-slate-900/90 border border-cyan-500/40 text-cyan-300 font-mono text-sm rounded-xl shadow-lg flex justify-between items-center transition-colors hover:border-cyan-400"
-            >
-              <div className="flex items-center gap-2 overflow-hidden text-left">
-                <span className="text-xs text-slate-500 font-mono">
-                  [0{activeIndex + 1}]
-                </span>
-                <span className="font-bold truncate text-white">{activeProject.projectName}</span>
-              </div>
-              <span
-                className={`text-xs text-cyan-400 transition-transform duration-300 shrink-0 ml-2 ${
-                  isDropdownOpen ? 'rotate-180' : ''
-                }`}
-              >
-                ▼
-              </span>
-            </button>
-
-            {/* Dropdown Menu */}
-            {isDropdownOpen && (
-              <div className="absolute top-full left-0 right-0 mt-2 bg-slate-900 border border-cyan-500/40 rounded-xl shadow-2xl overflow-hidden z-30 backdrop-blur-xl divide-y divide-slate-800/80">
-                {projects.map((project, idx) => (
-                  <button
-                    key={project.id}
-                    onClick={() => {
-                      setActiveProjectId(project.id);
-                      setIsDropdownOpen(false);
-                    }}
-                    className={`w-full px-4 py-3 text-left font-mono text-xs flex items-center justify-between transition-colors ${
-                      activeProject.id === project.id
-                        ? 'bg-cyan-950/60 text-cyan-300 border-l-4 border-cyan-400 font-bold'
-                        : 'text-slate-300 hover:bg-slate-800/60 hover:text-cyan-400'
-                    }`}
-                  >
-                    <div className="flex items-center gap-2 truncate">
-                      <span className="text-slate-500">0{idx + 1}.</span>
-                      <span className="truncate">{project.projectName}</span>
-                    </div>
-                    <span className="text-[10px] text-slate-500 shrink-0 ml-2">
-                      [{project.status}]
-                    </span>
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Desktop Project Tabs Bar */}
-        <div className="hidden md:flex flex-wrap gap-2 p-2.5 bg-slate-900/70 border border-cyan-500/20 rounded-xl">
-          {filteredProjects.map((project) => {
-            const originalIndex = projects.findIndex((p) => p.id === project.id);
-            const isActive = activeProject.id === project.id;
-            return (
-              <button
-                key={project.id}
-                onClick={() => setActiveProjectId(project.id)}
-                className={`px-3.5 py-2 rounded-lg font-mono text-xs md:text-sm transition-all duration-200 flex items-center gap-2 ${
-                  isActive
-                    ? 'bg-cyan-500 text-slate-950 font-bold shadow-[0_0_15px_rgba(6,182,212,0.4)] border border-cyan-300 scale-[1.02]'
-                    : 'bg-slate-900/60 text-slate-400 hover:text-cyan-300 hover:bg-slate-800/80 border border-slate-800 hover:border-cyan-500/40'
-                }`}
-              >
-                <span className={`text-[11px] ${isActive ? 'text-slate-800 font-semibold' : 'text-slate-500'}`}>
-                  0{originalIndex + 1}.
-                </span>
-                <span>{project.projectName}</span>
-                {project.status === 'Live Demo' && (
-                  <span
-                    className={`w-1.5 h-1.5 rounded-full ${
-                      isActive ? 'bg-slate-950' : 'bg-emerald-400 animate-pulse'
-                    }`}
-                    title="Live Game / Demo Available"
-                  ></span>
-                )}
-              </button>
-            );
-          })}
+          {/* Dropdown Menu */}
+          {isDropdownOpen && (
+            <div className="absolute top-full left-0 right-0 mt-2 bg-slate-950/95 border border-cyan-500/50 rounded-sm shadow-2xl overflow-hidden z-30 backdrop-blur-xl divide-y divide-slate-800/80">
+              {projects.map((project, idx) => (
+                <button
+                  key={project.id}
+                  onClick={() => {
+                    handleSelectProject(project.id);
+                    setIsDropdownOpen(false);
+                  }}
+                  className={`w-full px-4 py-3 text-left font-mono text-xs flex items-center justify-between transition-colors cursor-pointer ${
+                    activeProject.id === project.id
+                      ? 'bg-cyan-950/70 text-cyan-300 border-l-4 border-cyan-400 font-bold'
+                      : 'text-slate-300 hover:bg-slate-900 hover:text-cyan-400'
+                  }`}
+                >
+                  <div className="flex items-center gap-2 truncate">
+                    <span className="text-slate-500">0{idx + 1}.</span>
+                    <span className="truncate">{project.projectName}</span>
+                  </div>
+                  <span className="text-[10px] text-slate-500 shrink-0 ml-2">
+                    [{project.status}]
+                  </span>
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 
-      {/* 3. Main Project HUD Showcase Card */}
-      <div className="cyber-panel cyber-corner rounded-xl p-6 md:p-8 space-y-6">
+      {/* Main Grid: Desktop Sidebar + Showcase Card */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        {/* Left Sidebar: HUD Project Directory (Desktop Only) */}
+        <aside className="hidden lg:block lg:col-span-4 sticky top-40 space-y-4">
+          {/* Project Directory List */}
+          <div className="cyber-panel p-3.5 rounded-sm border border-cyan-900/50 space-y-2">
+            <div className="flex items-center justify-between text-xs font-mono text-slate-400 border-b border-slate-800/80 pb-2">
+              <span className="text-cyan-400 font-bold flex items-center gap-1.5">
+                <span>&gt;</span> PROJECT_DIRECTORY
+              </span>
+              <span className="text-[10px] text-slate-500">
+                [0{projects.length} PROJECTS]
+              </span>
+            </div>
+
+            <div className="space-y-2 max-h-[calc(100vh-250px)] overflow-y-auto pr-1">
+              {projects.map((project, idx) => {
+                const isActive = activeProject.id === project.id;
+                return (
+                  <button
+                    key={project.id}
+                    onClick={() => handleSelectProject(project.id)}
+                    className={`w-full text-left p-3 rounded-sm font-mono transition-all duration-200 cursor-pointer relative overflow-hidden group cyber-tab-sheen ${
+                      isActive
+                        ? 'cyber-tab-active border-l-4 border-l-cyan-400'
+                        : 'cyber-tab-inactive hover:border-cyan-500/50'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between gap-1 mb-1">
+                      <span
+                        className={`text-[11px] font-bold ${
+                          isActive ? 'text-cyan-300' : 'text-slate-500 group-hover:text-cyan-400/80'
+                        }`}
+                      >
+                        0{idx + 1}. {'//'} {project.category.toUpperCase()}
+                      </span>
+                      {project.status === 'Live Demo' ? (
+                        <span className="inline-flex items-center gap-1 text-[10px] text-emerald-400 font-semibold">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                          LIVE
+                        </span>
+                      ) : (
+                        <span className="text-[10px] text-cyan-400/80">OPEN</span>
+                      )}
+                    </div>
+
+                    <div className="font-bold text-xs md:text-sm text-white group-hover:text-cyan-300 transition-colors truncate">
+                      {isActive && <span className="text-cyan-400 mr-1.5">&gt;</span>}
+                      {project.projectName}
+                    </div>
+
+                    <div className="text-[11px] text-slate-400 mt-1 truncate">
+                      {project.tags.slice(0, 2).join(' • ')}
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </aside>
+
+        {/* Right Column: Main Project HUD Showcase Card */}
+        <div className="lg:col-span-8 cyber-panel cyber-corner rounded-xl p-6 md:p-8 space-y-6">
         {/* Top Meta & Status Tracker */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800/80 pb-4">
           <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-cyan-400">
@@ -669,5 +676,7 @@ export default function ProjectsContent() {
         </div>
       </div>
     </div>
-  );
+  </div>
+);
 }
+
