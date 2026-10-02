@@ -12,7 +12,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
   const [activeTab, setActiveTab] = useState('about');
 
   return (
-    <div className="relative flex flex-col min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+    <div className="relative flex flex-col min-h-screen bg-gradient-to-br from-slate-900 via-slate-800/80 to-slate-900">
       {/* Animated grid background */}
       <div className="grid-bg"></div>
       
@@ -25,7 +25,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
       </div>
 
       {/* Footer pinned to bottom */}
-      <footer className="relative z-10 bg-slate-950 text-slate-300 py-8 border-t border-cyan-900 border-glow">
+      <footer className="relative z-10 bg-slate-900 text-slate-300 py-8 border-t border-cyan-900/80 border-glow">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <p className="text-sm md:text-base">
             <span className="neon-text">&gt;</span> &copy; 2026 Ganausi. All rights reserved. <span className="neon-text">&lt;</span>
